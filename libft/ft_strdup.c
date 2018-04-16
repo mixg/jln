@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/23 15:12:07 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/16 16:34:55 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+char	*ft_strdup(const char *s1)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	int		i;
+	int		len;
+	char	*str;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	len = ft_strlen(s1);
+	if ((str = ft_memalloc(len + 1)) == 0)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		str[i] = s1[i];
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }

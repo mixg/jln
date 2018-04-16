@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/22 14:12:32 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/11 18:31:58 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+void	ft_bzero(void *s, size_t n)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
-
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
-	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
-	}
+	ft_memset(s, 0, n);
 }

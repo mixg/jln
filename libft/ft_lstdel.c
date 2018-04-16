@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/03/13 13:15:51 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/13 19:23:58 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	t_list	*nextlst;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	while (*alst)
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		nextlst = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = nextlst;
 	}
 }

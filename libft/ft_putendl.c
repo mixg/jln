@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/20 16:47:42 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/12 20:50:28 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+void	ft_putendl(char const *s)
 {
-	while (*tet)
+	if (s != NULL && *s)
 	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
-
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
-	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		ft_putstr(s);
+		ft_putchar('\n');
 	}
 }

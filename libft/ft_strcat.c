@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/23 17:09:15 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/11 21:14:41 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	int	i;
+	int	j;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	i = ft_strlen(s1);
+	j = 0;
+	while (s2[j])
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		s1[i + j] = s2[j];
+		j++;
 	}
+	s1[i + j] = '\0';
+	return (s1);
 }

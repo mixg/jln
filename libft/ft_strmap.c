@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/03/01 13:31:39 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/12 19:57:20 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	int		i;
+	size_t	j;
+	char	*fresh;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	if (s == NULL || f == NULL)
+		return (0);
+	j = ft_strlen(s);
+	if ((fresh = (char *)malloc(j + 1 * sizeof(char))) == 0)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		fresh[i] = f(s[i]);
+		i++;
 	}
+	fresh[i] = '\0';
+	return (fresh);
 }

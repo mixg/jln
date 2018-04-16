@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/24 19:03:26 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/11 20:50:50 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	int		i;
+	char	*s1;
+	int		len;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	i = 0;
+	s1 = (char *)s;
+	len = ft_strlen(s);
+	while (s[i])
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		if (s[i] == (unsigned char)c)
+			return (&s1[i]);
+		i++;
 	}
+	if (c == '\0')
+		return (&s1[len]);
+	return (NULL);
 }

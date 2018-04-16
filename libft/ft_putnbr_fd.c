@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/03/01 17:59:54 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/13 09:43:20 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+void	ft_putnbr_fd(int n, int fd)
 {
-	while (*tet)
+	unsigned int	ncpy;
+
+	if (n < 0)
 	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
+		ft_putchar_fd('-', fd);
+		n = -n;
 	}
-	return (0);
-}
-
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	ncpy = n;
+	if (ncpy > 9)
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		ft_putnbr_fd(ncpy / 10, fd);
+		ft_putnbr_fd(ncpy % 10, fd);
+	}
+	else
+	{
+		ncpy += '0';
+		ft_putchar_fd(ncpy, fd);
 	}
 }

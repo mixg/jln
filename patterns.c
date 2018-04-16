@@ -6,7 +6,7 @@
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 00:27:35 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 00:27:55 by mxiong           ###   ########.fr       */
+/*   Updated: 2018/04/15 20:34:35 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	*valid_patterns(int n)
 	char	*block_pattern[20];
 
 	block_pattern[0] = "##..#...#";
-	block_pattern[1] = "..##...#...#";
+	block_pattern[1] = "##...#...#";
 	block_pattern[2] = "#...#...##";
-	block_pattern[3] = "...#...#..##";
+	block_pattern[3] = ".#...#..##";
 	block_pattern[4] = "###.#";
-	block_pattern[5] = ".###...#";
+	block_pattern[5] = "###...#";
 	block_pattern[6] = "#...###";
-	block_pattern[7] = "...#.###";
+	block_pattern[7] = "..#.###";
 	block_pattern[8] = "##...##";
 	block_pattern[9] = ".#..##..#";
 	block_pattern[10] = ".##.##";

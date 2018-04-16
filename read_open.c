@@ -6,7 +6,7 @@
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/05 19:41:44 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 00:24:52 by mxiong           ###   ########.fr       */
+/*   Updated: 2018/04/15 20:39:36 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int		parse_pattern(char **tet)
 	int	count;
 
 	i = 0;
-	j = 0;
 	while (tet[i])
 	{
+		j = 0;
 		count = 0;
 		while ((tet[i][j] == '.' || tet[i][j] == '#') && tet[i][j++])
 		{
-			if (tet[i] == '#')
+			if (tet[i][j] == '#')
 				count++;
 		}
-		if (!(count > 2 && count < 5) || i != 16)
+		if (!(count > 2 && count < 5) || j != 16)
 			return (0);
 		i++;
 	}
@@ -44,17 +44,19 @@ int		validate(char **tet, char **pattern)
 	j = 0;
 	while (tet[i])
 	{
-		while (pattern[j])
+		while (pattern[j] && tet[i])
 		{
 			if (bool_strstr(tet[i], pattern[j]))
 			{
-				if (tet[i + 1] == '\0')
-					return (1);
 				i++;
 				j = -1;
 			}
 			j++;
 		}
+		if (tet[i] == '\0')
+			return (1);
+		else
+			return (0);
 	}
 	return (0);
 }
@@ -73,7 +75,7 @@ char	*open_read(char *str)
 {
 	int		fd;
 	int		i;
-	char	buf[buf_size];
+	char	buf[BUF_SIZE];
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
@@ -81,7 +83,7 @@ char	*open_read(char *str)
 		error(0);
 		exit(1);
 	}
-	i = read(fd, buf, buf_size);
+	i = read(fd, buf, BUF_SIZE);
 	buf[i] = '\0';
 	close(fd);
 	return (rm_newline(buf));

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/26 14:11:08 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/12 20:17:03 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	size_t	i;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
-	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
-	}
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] && s2[i] && i < n - 1)
+		i++;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }

@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/02/24 21:03:13 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/06 16:13:09 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	letter(char *tet)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	while (*tet)
-	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
-	}
-	return (0);
-}
+	size_t	nlen;
+	size_t	i;
+	size_t	j;
 
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
+	nlen = ft_strlen(needle);
+	i = 0;
+	if (nlen == 0)
+		return ((char *)haystack);
+	while (haystack[i])
 	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
+		j = 0;
+		while (needle[j] == haystack[i + j])
+		{
+			if (j == nlen - 1)
+				return ((char *)haystack + i);
+			j++;
+		}
+		i++;
 	}
+	return (NULL);
 }

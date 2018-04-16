@@ -6,7 +6,7 @@
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/05 19:52:28 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 00:29:27 by mxiong           ###   ########.fr       */
+/*   Updated: 2018/04/15 21:08:50 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		error(int error_value)
 {
 	if (error_value)
-		ft_putstr("usage: ./fillit source_file\n");
+		ft_putstr("usage: ./fillit <source_file>\n");
 	else
 		ft_putstr("error\n");
 	return (0);
@@ -43,28 +43,6 @@ int		bool_strstr(const char *haystack, const char *needle)
 		i++;
 	}
 	return (0);
-}
-
-char	*rm_newline(char *s)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	str = s;
-	while (*str)
-	{
-		while (*str == '\n')
-		{
-			if (*str == '\n' && *(str + 1) == '\n')
-				s[i++] = *str++;
-			str++;
-		}
-		while (*str != '\n' && *str)
-			s[i++] = *str++;
-	}
-	s[i] = '\0';
-	return (s);
 }
 
 char	**trim_tet(char **tet)

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   ft_check_whitespace.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/15 00:26:03 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 20:33:08 by mxiong           ###   ########.fr       */
+/*   Created: 2018/03/12 17:25:21 by mxiong            #+#    #+#             */
+/*   Updated: 2018/03/12 17:26:26 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-char	letter(char *tet)
+int	ft_check_whitespace(char const *s)
 {
-	while (*tet)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		if (ft_isalpha(*tet))
-			return (*tet);
-		tet++;
+		if (s[i] == '\t' || s[i] == '\n' || s[i] == ' ')
+			return (1);
+		i++;
 	}
 	return (0);
-}
-
-void	remove_block(char **map, char *tet)
-{
-	char	c;
-	char	*tmp_map;
-
-	c = letter(tet);
-	tmp_map = *map;
-	while (*tmp_map)
-	{
-		if (*tmp_map == c)
-			*tmp_map = '.';
-		tmp_map++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: mxiong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 17:20:13 by mxiong            #+#    #+#             */
-/*   Updated: 2018/04/15 00:47:23 by mxiong           ###   ########.fr       */
+/*   Updated: 2018/04/15 21:11:38 by mxiong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
-//# include "libft.h"
 
-# define buf_size 4096
+# define BUF_SIZE 4096
 
 char	*rm_newline(char *s);
 char	**tmp_pattern(void);
@@ -41,5 +40,12 @@ int		solve(int map_size, char **tet, char **map);
 int		check_solve(int map_size, char **tet, char **map);
 void	place(int map_size, int i, char *tet, char **map);
 void	remove_block(char **map, char *tet);
+int		ft_isalpha(int c);
+char	**ft_strsplit(const char *s, char c);
+void	ft_putstr(char const *str);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *str);
+int		find_newline(char *s);
+char	*rm_newline(char *s);
 
 #endif
